@@ -33,7 +33,7 @@ public class ProductDboRepository implements ProductRepository {
     Product product = productMapper.toDomain(productEntities);
 
     List<Price> filteredPrices = product.getPrice().stream().filter(price -> applicationDate.isAfter(price.getStartDate()) && applicationDate.isBefore(price.getEndDate())).collect(Collectors.toList());
-    if (filteredPrices .isEmpty()) {
+    if (filteredPrices.isEmpty()) {
       throw new NoSuchElementException();
     }
 
